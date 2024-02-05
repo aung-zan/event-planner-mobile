@@ -1,3 +1,11 @@
+export const host = "http://127.0.0.1:8000";
+// export const host = "http://192.168.100.34:8000";
+
+export const headers = {
+  "Content-Type": "application/json",
+  "Accept": "application/json",
+};
+
 export const Colors = {
   primary: "#F2E6D8", // main
   secondary: "#006d8b", // main

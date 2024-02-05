@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { getEvents, getEventsByTypes } from "../api/EventList";
+import { getEvents } from "../api/EventList";
+import { getEventsByTypes } from "../helper/Helper";
 import Loading from "../components/Loading";
 import { Colors, ListSegment } from "../constants/Constants";
 import OngoingEvent from "../components/OngoingEvent";
@@ -8,14 +9,15 @@ import PendingEvent from "../components/PendingEvent";
 import CompleteEvent from "../components/CompleteEvent";
 import Segment from "../components/Segment";
 
+// fetch data.
 const getData = (setData) => {
   React.useEffect(() => {
     getEvents()
       .then((result) => {
         setData(getEventsByTypes(result));
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(({ message }) => {
+        // console.log(message);
       });
   }, []);
 };

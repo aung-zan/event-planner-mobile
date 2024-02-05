@@ -1,14 +1,22 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import EventScreen from '../screens/EventScreen';
 import { NavigationContainer } from '@react-navigation/native';
+import { useGlobal } from '../providers/GlobalProvider';
+import LoginScreen from '../screens/LoginScreen';
+import EventScreen from '../screens/EventScreen';
 
 const Stack = createNativeStackNavigator();
 
 const StackNavigator = () => {
+  const { authenticated } = useGlobal();
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Event" component={EventScreen} />
+        {!authenticated ? (
+          <Stack.Screen name="Login" component={LoginScreen} />
+        ) : (
+          <Stack.Screen name="Event" component={EventScreen} />
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   )

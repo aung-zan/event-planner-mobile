@@ -1,7 +1,7 @@
 export const host = "http://127.0.0.1:8000";
 // export const host = "http://192.168.100.34:8000";
 
-export const headers = {
+export let headers = {
   "Content-Type": "application/json",
   "Accept": "application/json",
 };

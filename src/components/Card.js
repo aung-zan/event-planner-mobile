@@ -19,9 +19,9 @@ const Card = ({ navigation, data, type }) => {
 
   const cardOnClick = (id) => {
     // if (type !== "normal") {
-    //   const params = {
-    //     itemId: id,
-    //   };
+      const params = {
+        itemId: id,
+      };
     //   navigation.navigate("Drawer", {
     //     screen: "Tab",
     //     params: {
@@ -30,6 +30,10 @@ const Card = ({ navigation, data, type }) => {
     //     },
     //   });
     // }
+    navigation.navigate("Tab", {
+      screen: "Home",
+      params: params,
+    });
   };
 
   return (

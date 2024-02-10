@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { useGlobal } from "../providers/GlobalProvider";
 import LoginScreen from "../screens/LoginScreen";
 import EventScreen from "../screens/EventScreen";
+import TabNavigator from "../navigators/TabNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,7 +22,10 @@ const StackNavigator = () => {
             }}
           />
         ) : (
-          <Stack.Screen name="Event" component={EventScreen} />
+          <>
+            <Stack.Screen name="Event" component={EventScreen} />
+            <Stack.Screen name="Tab" component={TabNavigator} options={{ headerShown: false }} />
+          </>
         )}
       </Stack.Navigator>
     </NavigationContainer>

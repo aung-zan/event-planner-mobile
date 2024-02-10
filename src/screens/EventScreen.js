@@ -60,7 +60,7 @@ const EventScreen = ({ navigation }) => {
             <Text style={styles.titleText}>Ongoing Event</Text>
           </View>
 
-          <OngoingEvent ongoingEvent={ongoingEvent} />
+          <OngoingEvent navigation={navigation} ongoingEvent={ongoingEvent} />
 
           <Segment
             segments={ListSegment}
@@ -69,9 +69,9 @@ const EventScreen = ({ navigation }) => {
           />
 
           {segmentType == 1 ? (
-            <PendingEvent pendingEvent={pendingEvent} />
+            <PendingEvent navigation={navigation} pendingEvent={pendingEvent} />
           ) : (
-            <CompleteEvent completeEvent={completeEvent} />
+            <CompleteEvent navigation={navigation} completeEvent={completeEvent} />
           )}
         </>
       }

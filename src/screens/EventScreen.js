@@ -8,25 +8,42 @@ import OngoingEvent from "../components/OngoingEvent";
 import PendingEvent from "../components/PendingEvent";
 import CompleteEvent from "../components/CompleteEvent";
 import Segment from "../components/Segment";
+import { useGlobal } from "../providers/GlobalProvider";
+import { removeToken } from "../helper/Storage";
+import { HeaderOptions } from "../navigators/NavigatorOptions";
+
+const headerOptions = (params) => {
+  const navigation = params.navigation;
+
+  React.useEffect(() => {
+    HeaderOptions(params);
+  }, [navigation]);
+};
 
 // fetch data.
-const getData = (setData) => {
+const getData = (setData, setAuthenticated) => {
   React.useEffect(() => {
     getEvents()
       .then((result) => {
         setData(getEventsByTypes(result));
       })
-      .catch(({ message }) => {
-        // console.log(message);
+      .catch( async ({ message }) => {
+        if (message === "Unauthenticated") {
+            await removeToken();
+            setAuthenticated(false);
+        }
       });
   }, []);
 };
 
 const EventScreen = ({ navigation }) => {
+  const { setAuthenticated } = useGlobal();
   const [data, setData] = React.useState(null);
   const [segmentType, setSegmentType] = React.useState(1);
 
-  getData(setData);
+  headerOptions({ navigation, setAuthenticated });
+
+  getData(setData, setAuthenticated);
   const ongoingEvent = data?.ongoing;
   const pendingEvent = data?.pending;
   const completeEvent = data?.complete;
@@ -79,7 +96,7 @@ const styles = StyleSheet.create({
     paddingLeft: "2%",
   },
   titleText: {
-    // fontFamily: "SF",
+    fontFamily: "SF",
     fontSize: 18,
   },
 });

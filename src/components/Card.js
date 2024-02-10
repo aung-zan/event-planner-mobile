@@ -49,7 +49,7 @@ const Card = ({ navigation, data, type }) => {
             color={Colors.white}
           />
           <Text style={styles.info}>
-            {data.date_from} {data.start} ~ {data.date_to} {data.end}
+            {data.event_start} ~ {data.event_end}
           </Text>
         </View>
 

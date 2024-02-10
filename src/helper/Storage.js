@@ -16,3 +16,11 @@ export const setToken = async (token) => {
     console.log("error in setting item:" + error);
   }
 }
+
+export const removeToken = async () => {
+  try {
+    await AsyncStorage.removeItem("token");
+  } catch (error) {
+    console.log("error in removing item:" + error);
+  }
+}

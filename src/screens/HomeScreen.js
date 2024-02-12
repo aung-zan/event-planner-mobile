@@ -1,13 +1,15 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { HeaderOptions } from "../navigators/NavigatorOptions";
-import { Colors } from "../constants/Constants";
+import { Colors, HomeSegment } from "../constants/Constants";
 import { getDashboard } from "../api/Home";
 import { useGlobal } from "../providers/GlobalProvider";
 import { removeToken } from "../helper/Storage";
 import { getHomeData } from "../helper/Helper";
 import Card from "../components/Card";
 import Loading from "../components/Loading";
+import Segment from "../components/Segment";
+import Chart from "../components/Chart";
 
 const headerOptions = (params) => {
   const navigation = params.navigation;
@@ -38,6 +40,7 @@ const HomeScreen = ({ route, navigation }) => {
   const styleBack = styles.backButton;
   const eventID = route.params?.itemId;
   const [data, setData] = React.useState(null);
+  const [segmentType, setSegmentType] = React.useState(1);
 
   headerOptions({ navigation, navigateBack, styleBack });
 
@@ -52,6 +55,13 @@ const HomeScreen = ({ route, navigation }) => {
         {data === null ? <Loading /> : (
           <>
             <Card data={exhibition} type="normal" />
+            <Segment
+              segments={HomeSegment}
+              segmentType={segmentType}
+              changeSegmentType={setSegmentType}
+            />
+
+            {segmentType === 1 ? <Chart type="group" data={chartData} /> : null}
           </>
         )}
       </View>

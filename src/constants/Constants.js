@@ -37,3 +37,13 @@ export const ListSegment = [
     name: "Completed",
   },
 ];
+
+export const HomeSegment = [
+  {
+    key: 1,
+    name: "Dashboard",
+  }, {
+    key: 2,
+    name: "Booth"
+  }
+];

@@ -39,7 +39,7 @@ const Card = ({ navigation, data, type }) => {
   return (
     <Pressable
       style={[styles.card, styleType]}
-      onPress={() => cardOnClick(data.id)}
+      onPress={() => cardOnClick(data.exhibition_id)}
     >
       <View style={styles.cardBody}>
         <View style={styles.cardTitle}>

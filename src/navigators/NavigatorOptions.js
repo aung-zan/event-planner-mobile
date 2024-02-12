@@ -14,7 +14,7 @@ const logout = (setAuthenticated) => {
   return () => <Logout onPress={onPress} />;
 }
 
-const back = (navigation, navigateBack) => {
+const back = (navigation, navigateBack, styleBack) => {
   return () => (
     <HeaderBackButton
       labelVisible={false}
@@ -22,6 +22,7 @@ const back = (navigation, navigateBack) => {
         navigation.navigate(navigateBack);
       }}
       tintColor={Colors.white}
+      style={styleBack}
     />
   );
 }
@@ -32,14 +33,14 @@ export const HeaderOptions = (params) => {
   const setAuthenticated = params?.setAuthenticated;
 
   const navigateBack = params?.navigateBack;
-  const style = params?.style;
+  const styleBack = params?.styleBack;
 
   if (setAuthenticated) {
     options.headerRight = logout(setAuthenticated);
   }
 
   if (navigateBack) {
-    options.headerLeft = back(navigation, navigateBack);
+    options.headerLeft = back(navigation, navigateBack, styleBack);
   }
 
   options.headerStyle = { backgroundColor: Colors.secondary };
@@ -48,7 +49,3 @@ export const HeaderOptions = (params) => {
 
   navigation.setOptions(options);
 }
-
-const style = StyleSheet.create({
-
-});

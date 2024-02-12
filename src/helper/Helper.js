@@ -23,4 +23,14 @@ export const getEventsByTypes = (result) => {
   data.message = result.message;
 
   return data;
+};
+
+export const getHomeData = (result) => {
+  const data = {
+    exhibition: result?.data?.exhibition,
+    chartData: result?.data?.chartData,
+    totalVisitorCount: result?.data?.totalVisitorCount,
+  };
+
+  return data;
 }

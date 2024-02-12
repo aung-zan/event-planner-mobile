@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { HeaderOptions } from "../../navigators/NavigatorOptions";
-import { useGlobal } from "../../providers/GlobalProvider";
 
 const headerOptions = (params) => {
   const navigation = params.navigation;
@@ -12,10 +11,9 @@ const headerOptions = (params) => {
 }
 
 const SpotScreen = ({ navigation }) => {
-  const { setAuthenticated } = useGlobal();
   const navigateBack = "Event";
 
-  headerOptions({ navigation, setAuthenticated, navigateBack });
+  headerOptions({ navigation, navigateBack });
 
   return (
     <View>

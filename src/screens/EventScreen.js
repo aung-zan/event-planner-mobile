@@ -53,28 +53,30 @@ const EventScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      {data === null ? <Loading /> :
-        <>
-          <View style={styles.title}>
-            <Text style={styles.titleText}>Ongoing Event</Text>
-          </View>
+    <View style={styles.background}>
+      <View style={styles.container}>
+        {data === null ? <Loading /> :
+          <>
+            <View style={styles.title}>
+              <Text style={styles.titleText}>Ongoing Event</Text>
+            </View>
 
-          <OngoingEvent navigation={navigation} ongoingEvent={ongoingEvent} />
+            <OngoingEvent navigation={navigation} ongoingEvent={ongoingEvent} />
 
-          <Segment
-            segments={ListSegment}
-            segmentType={segmentType}
-            changeSegmentType={changeSegmentType}
-          />
+            <Segment
+              segments={ListSegment}
+              segmentType={segmentType}
+              changeSegmentType={changeSegmentType}
+            />
 
-          {segmentType == 1 ? (
-            <PendingEvent navigation={navigation} pendingEvent={pendingEvent} />
-          ) : (
-            <CompleteEvent navigation={navigation} completeEvent={completeEvent} />
-          )}
-        </>
-      }
+            {segmentType == 1 ? (
+              <PendingEvent navigation={navigation} pendingEvent={pendingEvent} />
+            ) : (
+              <CompleteEvent navigation={navigation} completeEvent={completeEvent} />
+            )}
+          </>
+        }
+      </View>
     </View>
   );
 };
@@ -83,11 +85,14 @@ export default EventScreen;
 
 const styles = StyleSheet.create({
   background: {
+    flex: 1,
     backgroundColor: Colors.secondary
   },
   container: {
     flex: 1,
     backgroundColor: Colors.primary,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
   },
   title: {
     marginTop: "5%",

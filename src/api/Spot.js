@@ -1,12 +1,12 @@
 import { headers, host } from "../constants/Constants";
 import { getToken } from "../helper/Storage";
 
-export const getDashboard = async (eventID) => {
+export const getSpot = async (eventID) => {
   try {
     const token = await getToken();
     headers['Authorization'] = `Bearer ${token}`;
 
-    const response = await fetch(`${host}/api/v1.0/event/${eventID}/home`, {
+    const response = await fetch(`${host}/api/v1.0/event/${eventID}/spots`, {
       headers: headers
     });
 

@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { TabIcons, Colors } from "../constants/Constants";
+import { TabIcons, Colors, scannerNavigator } from "../constants/Constants";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React from "react";
 
@@ -25,7 +25,20 @@ const NormalTab = ({ icon, iconSize }) => {
 }
 
 const TabBar = ({ state, descriptors, navigation }) => {
+  const showTab = ["Home"];
+
   const [hideTab, setHideTab] = React.useState(false);
+  const [eventID, setEventID] = React.useState(null);
+
+  React.useLayoutEffect(() => {
+    const routes = state.routes;
+    const homeRoute = routes[2];
+
+    if (homeRoute.params?.eventID) {
+      setEventID(homeRoute.params.eventID);
+    }
+
+  }, [state, descriptors]);
 
   return (
     <View style={hideTab ? styles.hideContainer : styles.container}>
@@ -40,7 +53,16 @@ const TabBar = ({ state, descriptors, navigation }) => {
         }
 
         const onPress = () => {
-          navigation.navigate(route.name, route.params);
+          if (label === "Home") {
+            navigation.navigate(label, route.params);
+          } else {
+            navigation.navigate(label, {
+              screen: scannerNavigator[label],
+              params: {
+                eventID: eventID
+              }
+            });
+          }
         };
 
         return (

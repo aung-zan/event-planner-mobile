@@ -17,7 +17,7 @@ const headerOptions = (params) => {
   React.useEffect(() => {
     HeaderOptions(params);
   }, [navigation]);
-}
+};
 
 const getData = (eventID, setData, setAuthenticated) => {
   React.useEffect(() => {
@@ -38,7 +38,7 @@ const HomeScreen = ({ route, navigation }) => {
   const { setAuthenticated } = useGlobal();
   const navigateBack = "Event";
   const styleBack = styles.backButton;
-  const eventID = route.params?.itemId;
+  const eventID = route.params?.eventID;
   const [data, setData] = React.useState(null);
   const [segmentType, setSegmentType] = React.useState(1);
 

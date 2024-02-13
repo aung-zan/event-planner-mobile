@@ -41,8 +41,6 @@ export const getSpotData = (result) => {
     exit: [],
   };
 
-  console.log(result);
-
   result.data.map((item) => {
     switch (item.type) {
       case 1:

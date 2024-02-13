@@ -60,3 +60,7 @@ export const spotSegment = [
   { key: 1, name: "Entry" },
   { key: 2, name: "Exit" },
 ];
+
+export const boothSegment = [
+  { key: 1, name: "Booth" }
+];

@@ -58,8 +58,9 @@ const SpotScreen = ({ route, navigation }) => {
     icon = <MaterialCommunityIcons name="arrow-expand-left" size={24} color={Colors.white} />;
   }
 
-  const onPress = () => {
-    alert('hello');
+  const onPress = (params) => {
+    console.log(params);
+    navigation.navigate("SpotScanner", params);
   }
 
   return (

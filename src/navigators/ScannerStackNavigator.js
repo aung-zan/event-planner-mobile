@@ -5,6 +5,7 @@ import SpotScreen from "../screens/spot/SpotScreen";
 import BoothScreen from "../screens/booth/BoothScreen";
 import SeminarScreen from "../screens/seminar/SeminarScreen";
 import SurveyScreen from "../screens/survey/SurveyScreen";
+import SpotScannerScreen from "../screens/spot/SpotScannerScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -12,6 +13,7 @@ export const SpotNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Spot" component={SpotScreen} />
+      <Stack.Screen name="SpotScanner" component={SpotScannerScreen} />
     </Stack.Navigator>
   );
 };

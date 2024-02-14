@@ -16,8 +16,17 @@ const NotEmptyData = ({ data, icon, onPress }) => {
     <ScrollView>
 
       {data.map((item, index) => {
+        if (item?.spot_id) {
+          id = item.spot_id;
+        } else if (item?.seminar_id) {
+          id = item.seminar_id;
+        } else if (item?.survey_id) {
+          id = item.survey_id;
+        }
+
         const params = {
-          itemId: item.id,
+          eventID: item.exhibition_id,
+          itemID: id,
           name: item.name,
         };
 

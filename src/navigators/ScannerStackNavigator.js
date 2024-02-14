@@ -6,6 +6,8 @@ import BoothScreen from "../screens/booth/BoothScreen";
 import SeminarScreen from "../screens/seminar/SeminarScreen";
 import SurveyScreen from "../screens/survey/SurveyScreen";
 import SpotScannerScreen from "../screens/spot/SpotScannerScreen";
+import BoothScannerScreen from "../screens/booth/BoothScannerScreen";
+import SeminarScannerScreen from "../screens/seminar/SeminarScannerScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +24,7 @@ export const BoothNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Booth" component={BoothScreen} />
+      <Stack.Screen name="BoothScanner" component={BoothScannerScreen} />
     </Stack.Navigator>
   );
 };
@@ -30,6 +33,7 @@ export const SeminarNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Seminar" component={SeminarScreen} />
+      <Stack.Screen name="SeminarScanner" component={SeminarScannerScreen} />
     </Stack.Navigator>
   );
 };

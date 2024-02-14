@@ -57,8 +57,8 @@ const BoothScreen = ({ route, navigation }) => {
     />
   );
 
-  const onPress = () => {
-    alert('hello');
+  const onPress = (params) => {
+    navigation.navigate("BoothScanner", params);
   }
 
   return (

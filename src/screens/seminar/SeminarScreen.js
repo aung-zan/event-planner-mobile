@@ -48,8 +48,8 @@ const SeminarScreen = ({ route, navigation }) => {
     <MaterialCommunityIcons name="presentation" size={23} color={Colors.white} />
   );
 
-  const onPress = () => {
-    alert('hello');
+  const onPress = (params) => {
+    navigation.navigate("SeminarScanner", params);
   }
 
   return (

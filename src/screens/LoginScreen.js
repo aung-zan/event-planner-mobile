@@ -36,7 +36,7 @@ const LoginScreen = () => {
 
   return (
     <KeyboardAvoidingView
-      behaviour={Platform.OS === "ios" ? "padding" : "height"}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.mainContainer}
     >
       <View style={styles.container}>

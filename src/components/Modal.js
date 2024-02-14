@@ -9,7 +9,7 @@ const successMessage =
 const errorMessage =
   "Something went wrong.\nVisitor code: 100002\nVisitor name: Test";
 
-export const SuccessModal = ({ showModal, modalHandler }) => {
+export const SuccessModal = ({ showModal, modalHandler, message }) => {
   return (
     <Modal
       isOpen={showModal}
@@ -27,7 +27,7 @@ export const SuccessModal = ({ showModal, modalHandler }) => {
           <Text style={styles.successTitleText}>Success</Text>
         </View>
         <View style={styles.info}>
-          <Text style={styles.text}>{successMessage}</Text>
+          <Text style={styles.text}>{message}</Text>
         </View>
       </View>
 

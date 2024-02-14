@@ -59,7 +59,6 @@ const SpotScreen = ({ route, navigation }) => {
   }
 
   const onPress = (params) => {
-    console.log(params);
     navigation.navigate("SpotScanner", params);
   }
 

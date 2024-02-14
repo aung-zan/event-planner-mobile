@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Camera } from "expo-camera";
 import { HeaderOptions } from "../../navigators/NavigatorOptions";
 import React from "react";
@@ -30,6 +30,7 @@ const SpotScannerScreen = ({ route, navigation }) => {
   const [scan, setScan] = React.useState(false);
   const [showModal, setShowModal] = React.useState(false);
   const [modalType, setModalType] = React.useState(null);
+  const [message, setMessage] = React.useState("");
   const navigateBack = "Spot";
   const eventID = route.params?.eventID;
   const spotID = route.params?.itemID;
@@ -51,8 +52,8 @@ const SpotScannerScreen = ({ route, navigation }) => {
     setScan(true);
 
     spotAdmission(eventID, spotID, data)
-      .then(({ message }) => {
-        console.log(message);
+      .then((result) => {
+        setMessage(result?.message);
         setShowModal(true);
         setModalType(true);
       })
@@ -70,7 +71,7 @@ const SpotScannerScreen = ({ route, navigation }) => {
           onBarCodeScanned={scan ? undefined : barCodeScan}
         />
         {modalType ? (
-          <SuccessModal showModal={showModal} modalHandler={setShowModal} />
+          <SuccessModal showModal={showModal} modalHandler={setShowModal} message={message} />
         ) : (
           <ErrorModal showModal={showModal} modalHandler={setShowModal} />
         )}
